@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -14,12 +15,17 @@ import theme from '@theme'
 import { Button } from '@components'
 
 export function Home() {
-  const stockSymbols = Object.keys(mockStockData)
+  const navigation = useNavigation()
 
+  const stockSymbols = Object.keys(mockStockData)
   const [stockSymbol, setStockSymbol] = useState(stockSymbols[0])
 
-  const setSelectedItem = (item: any) => {
+  const setSelectedItem = useCallback((item: any) => {
     setStockSymbol(item)
+  }, [])
+
+  const onPressGetRecommendations = () => {
+    navigation.navigate('ShowRecommendation', { stockSymbol })
   }
 
   return (
@@ -43,7 +49,10 @@ export function Home() {
             <Picker.Item key={symbol} label={symbol} value={symbol} />
           ))}
         </Picker>
-        <Button title="Get Recommendations" />
+        <Button
+          title="Get Recommendations"
+          onPress={onPressGetRecommendations}
+        />
       </StockPickerContainer>
     </Container>
   )
