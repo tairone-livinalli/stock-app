@@ -8,6 +8,19 @@ module.exports = function (api) {
         'module:react-native-dotenv',
         { moduleName: '@env', allowUndefined: false },
       ],
+      [
+        'module-resolver',
+        {
+          root: ['./src'],
+          alias: {
+            '@routes': './src/routes',
+            '@components': './src/components',
+            '@screens': './src/screens',
+            '@theme': './src/theme',
+          },
+          extensions: ['.ts', '.tsx'],
+        },
+      ],
     ],
   }
 }
