@@ -7,7 +7,6 @@ import {
   Roboto_400Regular,
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto'
-// import { AutocompleteDropdownContextProvider } from 'react-native-autocomplete-dropdown'
 
 import theme from '@theme'
 import { Loading } from '@components'
@@ -26,10 +25,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
-        {/* <AutocompleteDropdownContextProvider> */}
         <StatusBar style="light" backgroundColor="transparent" translucent />
         <Routes />
-        {/* </AutocompleteDropdownContextProvider> */}
       </SafeAreaProvider>
     </ThemeProvider>
   )
