@@ -17,6 +17,7 @@ module.exports = function (api) {
             '@components': './src/components',
             '@screens': './src/screens',
             '@theme': './src/theme',
+            '@data': './src/data',
           },
           extensions: ['.ts', '.tsx'],
         },
