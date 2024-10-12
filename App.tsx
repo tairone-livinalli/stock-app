@@ -1,6 +1,7 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ThemeProvider } from 'styled-components/native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import {
   useFonts,
   Roboto_400Regular,
@@ -23,8 +24,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="light" backgroundColor="transparent" translucent />
-      <Routes />
+      <SafeAreaProvider>
+        <StatusBar style="light" backgroundColor="transparent" translucent />
+        <Routes />
+      </SafeAreaProvider>
     </ThemeProvider>
   )
 }
