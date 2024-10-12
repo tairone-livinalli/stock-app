@@ -1,9 +1,5 @@
 import styled from 'styled-components/native'
 
-type Recommendation = {
-  recommendation: 'buy' | 'sell' | 'hold'
-}
-
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-start;
@@ -18,7 +14,7 @@ export const Title = styled.Text`
   text-align: center;
 `
 
-export const RecommendationContainer = styled.View`
+export const RecommendationCard = styled.View`
   margin-top: 32px;
   padding: 16px;
   align-items: center;
@@ -35,13 +31,14 @@ export const StockName = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `
 
-export const Recommendation = styled.Text<Recommendation>`
-  color: ${({ recommendation, theme }) =>
-    recommendation === 'buy'
-      ? theme.COLORS.BRAND_LIGHT
-      : recommendation === 'sell'
-        ? theme.COLORS.ERROR
-        : theme.COLORS.WHITE};
+export const RecommendationContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`
+
+export const RecommendationText = styled.Text`
+  padding: 8px;
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `
