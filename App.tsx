@@ -9,7 +9,7 @@ import {
 
 import theme from './src/theme'
 import { Loading } from './src/components'
-import { Home } from './src/screens'
+import { Routes } from './src/routes'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,7 +24,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" backgroundColor="transparent" translucent />
-      <Home />
+      <Routes />
     </ThemeProvider>
   )
 }
