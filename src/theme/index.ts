@@ -11,6 +11,7 @@ export default {
     GRAY_800: '#202024',
     GRAY_700: '#29292E',
     GRAY_600: '#323238',
+    ERROR: '#FF3B30',
   },
   FONT_FAMILY: {
     REGULAR: 'Roboto_400Regular',
