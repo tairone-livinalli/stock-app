@@ -1,30 +1,40 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { ThemeProvider } from 'styled-components/native';
-import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import React from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { StyleSheet, Text, View } from 'react-native'
+import { ThemeProvider } from 'styled-components/native'
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto'
 
-import theme from './src/theme';
-import { Loading } from './src/components';
+import theme from './src/theme'
+import { Loading } from './src/components'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
-  });
+  })
 
-  if (!fontsLoaded) {
-    return <Loading />;
+  if (fontsLoaded) {
+    return (
+      <>
+        <StatusBar style="light" backgroundColor="transparent" translucent />
+        <Loading />
+      </>
+    )
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar style="light" backgroundColor="transparent" translucent />
       <View style={styles.container}>
         <Text>Hello World!</Text>
         <StatusBar style="auto" />
       </View>
-</ThemeProvider>
-  );
+    </ThemeProvider>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -34,4 +44,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})

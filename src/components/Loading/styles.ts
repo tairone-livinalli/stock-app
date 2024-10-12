@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native'
 
-import theme from "../../theme";
+import theme from '../../theme'
 
 export const Container = styled.View`
   flex: 1;
@@ -8,9 +8,9 @@ export const Container = styled.View`
   align-items: center;
 
   background-color: ${theme.COLORS.GRAY_800};
-`;
+`
 
 export const LoadIndicator = styled.ActivityIndicator.attrs({
-  size: "large",
+  size: 'large',
   color: theme.COLORS.BRAND_LIGHT,
-})``;
+})``
