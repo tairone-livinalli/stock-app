@@ -12,7 +12,8 @@
       "backgroundColor": "#202024"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "stock-app"
     },
     "android": {
       "adaptiveIcon": {
