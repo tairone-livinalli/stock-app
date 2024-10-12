@@ -1,29 +1,50 @@
-import React from 'react'
-// import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
+import React, { useState } from 'react'
+import { Picker } from '@react-native-picker/picker'
 
-import { Container, Title, Slogan } from './styles'
+import {
+  Container,
+  HeaderContainer,
+  Title,
+  Slogan,
+  StockPickerContainer,
+  StockPickerTitle,
+} from './styles'
 import { mockStockData } from '@data'
+import theme from '@theme'
+import { Button } from '@components'
 
 export function Home() {
   const stockSymbols = Object.keys(mockStockData)
-  console.log('🚀 ~ stockSymbols:', JSON.stringify(stockSymbols, null, 2))
+
+  const [stockSymbol, setStockSymbol] = useState(stockSymbols[0])
 
   const setSelectedItem = (item: any) => {
-    console.log('Selected item:', item)
+    setStockSymbol(item)
   }
 
   return (
     <Container>
-      <Title>Stock Recommender</Title>
-      <Slogan>The best stock recommendations. For free.</Slogan>
+      <HeaderContainer>
+        <Title>Stock Recommender</Title>
+        <Slogan>The best stock recommendations. For free.</Slogan>
+      </HeaderContainer>
 
-      {/* <AutocompleteDropdown
-        clearOnFocus={false}
-        closeOnBlur={true}
-        closeOnSubmit={true}
-        onSelectItem={setSelectedItem}
-        dataSet={stockSymbols.map((symbol) => ({ id: symbol, value: symbol }))}
-      /> */}
+      <StockPickerContainer>
+        <StockPickerTitle>
+          Select a stock symbol to get started
+        </StockPickerTitle>
+        <Picker
+          selectedValue={stockSymbol}
+          onValueChange={setSelectedItem}
+          style={{ color: theme.COLORS.WHITE, paddingVertical: 8 }}
+          itemStyle={{ color: theme.COLORS.WHITE }}
+        >
+          {stockSymbols.map((symbol) => (
+            <Picker.Item key={symbol} label={symbol} value={symbol} />
+          ))}
+        </Picker>
+        <Button title="Get Recommendations" />
+      </StockPickerContainer>
     </Container>
   )
 }

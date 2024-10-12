@@ -7,6 +7,8 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_800};
 `
 
+export const HeaderContainer = styled.View``
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.BRAND_LIGHT};
   font-size: ${({ theme }) => theme.FONT_SIZE.XXXL}px;
@@ -20,5 +22,16 @@ export const Slogan = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   text-align: center;
 
-  margin-bottom: 32px;
+  margin-bottom: 52px;
+`
+
+export const StockPickerContainer = styled.View`
+  margin-top: 52px;
+  justify-content: center;
+`
+export const StockPickerTitle = styled.Text`
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  text-align: center;
 `
