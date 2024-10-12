@@ -50,7 +50,7 @@ export function Home() {
           ))}
         </Picker>
         <Button
-          title="Get Recommendations"
+          title="Get Recommendation"
           onPress={onPressGetRecommendations}
         />
       </StockPickerContainer>
