@@ -19,6 +19,7 @@ module.exports = function (api) {
             '@theme': './src/theme',
             '@data': './src/data',
             '@modules': './src/modules',
+            '@services': './src/services',
           },
           extensions: ['.ts', '.tsx'],
         },
