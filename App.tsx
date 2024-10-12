@@ -1,6 +1,5 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
 import { ThemeProvider } from 'styled-components/native'
 import {
   useFonts,
@@ -10,6 +9,7 @@ import {
 
 import theme from './src/theme'
 import { Loading } from './src/components'
+import { Home } from './src/screens'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,31 +17,14 @@ export default function App() {
     Roboto_700Bold,
   })
 
-  if (fontsLoaded) {
-    return (
-      <>
-        <StatusBar style="light" backgroundColor="transparent" translucent />
-        <Loading />
-      </>
-    )
+  if (!fontsLoaded) {
+    return <Loading />
   }
 
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" backgroundColor="transparent" translucent />
-      <View style={styles.container}>
-        <Text>Hello World!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Home />
     </ThemeProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

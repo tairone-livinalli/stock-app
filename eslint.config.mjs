@@ -10,5 +10,5 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  pluginReactNative.configs.recommended,
+  pluginReactNative.configs.flat.recommended,
 ]
