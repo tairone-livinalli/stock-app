@@ -1,4 +1,5 @@
 import { mockStockData } from '@data'
+import { StockData } from '@models'
 
 interface RecommendationParams {
   stockSymbol: keyof typeof mockStockData
@@ -7,6 +8,7 @@ interface RecommendationParams {
 
 interface RecommendationResponse {
   action: 'buy' | 'hold' | 'sell'
+  stockData: StockData[]
 }
 
 export function getRecommendation({
@@ -28,21 +30,21 @@ export function getRecommendation({
 
   // Buy logic
   if (priceChange < -priceThreshold && socialChange > socialThreshold) {
-    return Promise.resolve({ action: 'buy' }) // Price drop but increasing social interest
+    return Promise.resolve({ action: 'buy', stockData: recentData }) // Price drop but increasing social interest
   } else if (
     priceChange > priceThreshold &&
     socialChange > socialThreshold / 2
   ) {
-    return Promise.resolve({ action: 'buy' }) // Rising price with moderate social media support
+    return Promise.resolve({ action: 'buy', stockData: recentData }) // Rising price with moderate social media support
 
     // Sell logic
   } else if (priceChange > priceThreshold && socialChange < -socialThreshold) {
-    return Promise.resolve({ action: 'sell' }) // Price increase but low social media interest
+    return Promise.resolve({ action: 'sell', stockData: recentData }) // Price increase but low social media interest
   } else if (priceChange < -priceThreshold && socialChange < -socialThreshold) {
-    return Promise.resolve({ action: 'sell' }) // Both price and social media falling
+    return Promise.resolve({ action: 'sell', stockData: recentData }) // Both price and social media falling
 
     // Hold logic
   } else {
-    return Promise.resolve({ action: 'hold' }) // Stable or minor changes in price and social media
+    return Promise.resolve({ action: 'hold', stockData: recentData }) // Stable or minor changes in price and social media
   }
 }
