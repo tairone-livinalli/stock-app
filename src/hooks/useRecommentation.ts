@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { mockStockData } from '@data'
 import { getRecommendation } from '@services'
+import { StockData } from '@models'
 
 interface RecommendationParams {
   stockSymbol: keyof typeof mockStockData
@@ -13,6 +14,7 @@ export function useRecommendation({
   daysAmount = 10,
 }: RecommendationParams) {
   const [action, setAction] = useState<'buy' | 'hold' | 'sell'>('hold')
+  const [stockData, setStockData] = useState<StockData[]>([])
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
@@ -22,11 +24,14 @@ export function useRecommendation({
       try {
         setIsLoading(true)
         setHasError(false)
+
         const recommendation = await getRecommendation({
           stockSymbol,
           daysAmount,
         })
+
         setAction(recommendation.action)
+        setStockData(recommendation.stockData)
       } catch (error) {
         console.error(error)
         setHasError(true)
@@ -40,6 +45,7 @@ export function useRecommendation({
 
   return {
     action,
+    stockData,
     isLoading,
     hasError,
   }
