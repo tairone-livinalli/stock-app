@@ -11,7 +11,8 @@
       "@data": ["src/data"],
       "@modules": ["src/modules"],
       "@services": ["src/services"],
-      "@hooks": ["src/hooks"]
+      "@hooks": ["src/hooks"],
+      "@models": ["src/models"]
     }
   },
   "exclude": ["node_modules"]
