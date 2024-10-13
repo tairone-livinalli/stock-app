@@ -10,7 +10,8 @@
       "@theme": ["src/theme"],
       "@data": ["src/data"],
       "@modules": ["src/modules"],
-      "@services": ["src/services"]
+      "@services": ["src/services"],
+      "@hooks": ["src/hooks"]
     }
   },
   "exclude": ["node_modules"]

@@ -20,6 +20,7 @@ module.exports = function (api) {
             '@data': './src/data',
             '@modules': './src/modules',
             '@services': './src/services',
+            '@hooks': './src/hooks',
           },
           extensions: ['.ts', '.tsx'],
         },
