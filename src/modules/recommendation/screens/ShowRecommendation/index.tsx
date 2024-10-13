@@ -41,9 +41,9 @@ export function ShowRecommendation({ route }: any) {
 
   useEffect(() => {
     const callRecommendation = async () => {
-      const recommendation = await getRecommendation(stockSymbol)
+      const recommendation = await getRecommendation({ stockSymbol })
 
-      setStockRecommendation(recommendation)
+      setStockRecommendation(recommendation.action)
     }
 
     callRecommendation()

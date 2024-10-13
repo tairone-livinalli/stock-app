@@ -11,9 +11,9 @@ function generateRandomData() {
 }
 
 export const mockStockData = {
-  AAPL: [generateRandomData()],
-  GOOG: [generateRandomData()],
-  MSFT: [generateRandomData()],
-  AMZN: [generateRandomData()],
-  TSLA: [generateRandomData()],
+  AAPL: generateRandomData(),
+  GOOG: generateRandomData(),
+  MSFT: generateRandomData(),
+  AMZN: generateRandomData(),
+  TSLA: generateRandomData(),
 }
