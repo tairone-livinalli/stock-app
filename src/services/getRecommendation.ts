@@ -22,9 +22,6 @@ export function getRecommendation({
   const socialChange =
     recentData[0].socialCount - recentData[recentData.length - 1].socialCount
 
-  console.log('🚀 ~ priceChange:', JSON.stringify(priceChange, null, 2))
-  console.log('🚀 ~ socialChange:', JSON.stringify(socialChange, null, 2))
-
   // Define thresholds for significant changes
   const priceThreshold = 15 // Price change threshold
   const socialThreshold = 500 // Social media count change threshold
