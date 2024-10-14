@@ -48,3 +48,26 @@ export const RecommendationText = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `
+
+export const Subtitle = styled.Text`
+  margin: 24px 0;
+  color: ${({ theme }) => theme.COLORS.GRAY_100};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  text-align: left;
+`
+
+export const StockDataCard = styled.View`
+  margin-top: 8px;
+  padding: 16px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 8px;
+
+  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+`
+
+export const StockList = styled.ScrollView`
+  flex: 1;
+`
