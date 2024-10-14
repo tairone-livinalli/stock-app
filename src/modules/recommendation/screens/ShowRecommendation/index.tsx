@@ -19,6 +19,7 @@ import {
   IconButton,
   StockPickerContainer,
   StockPickerTitle,
+  Input,
 } from './styles'
 
 import theme from '@theme'
@@ -77,14 +78,13 @@ export function ShowRecommendation({ route }: any) {
   const insets = useSafeAreaInsets()
 
   const [showFilter, setShowFilter] = useState(false)
-  const [stockSymbolFilter, setStockSymbolFilter] = useState(
-    route.params.stockSymbol
-  )
-  const [daysAmountFilter, setDaysAmountFilter] = useState(10)
+  const [stockSymbol, setStockSymbol] = useState(route.params.stockSymbol)
+  const [stockSymbolFilter, setStockSymbolFilter] = useState(stockSymbol)
+  const [daysAmountFilter, setDaysAmountFilter] = useState('10')
 
-  const { action, stockData, isLoading } = useRecommendation({
+  const { action, stockData, isLoading, refetch } = useRecommendation({
     stockSymbol: stockSymbolFilter,
-    daysAmount: daysAmountFilter,
+    daysAmount: Number(daysAmountFilter),
   })
 
   const stockSymbols = useStockSymbols()
@@ -103,6 +103,16 @@ export function ShowRecommendation({ route }: any) {
 
   const onPressDone = useCallback(() => {
     setShowFilter(false)
+    setStockSymbol(stockSymbolFilter)
+    refetch({
+      stockSymbol: stockSymbolFilter,
+      daysAmount: Number(daysAmountFilter),
+    })
+  }, [stockSymbolFilter, daysAmountFilter])
+
+  const onChangeDaysAmount = useCallback((days: string) => {
+    const numericDays = days.replace(/[^0-9]/g, '')
+    setDaysAmountFilter(numericDays)
   }, [])
 
   return (
@@ -132,7 +142,7 @@ export function ShowRecommendation({ route }: any) {
       ) : (
         <>
           <RecommendationCard>
-            <StockName>{stockSymbolFilter}</StockName>
+            <StockName>{stockSymbol}</StockName>
             <RecommendationContainer>
               <Ionicons name={ICON[action]} size={32} color={COLOR[action]} />
               <RecommendationText style={{ color: COLOR[action] }}>
@@ -144,7 +154,8 @@ export function ShowRecommendation({ route }: any) {
             <>
               <StockPickerContainer>
                 <StockPickerTitle>
-                  Change the stock symbol to get a new recommendation
+                  Change the stock symbol or amount of days to get a new
+                  recommendation
                 </StockPickerTitle>
                 <Picker
                   selectedValue={stockSymbolFilter}
@@ -156,6 +167,12 @@ export function ShowRecommendation({ route }: any) {
                     <Picker.Item key={symbol} label={symbol} value={symbol} />
                   ))}
                 </Picker>
+                <Input
+                  value={daysAmountFilter}
+                  keyboardType="number-pad"
+                  onChangeText={onChangeDaysAmount}
+                  placeholder="Amount of days to analyze"
+                />
                 <Button title="Done" onPress={onPressDone} />
               </StockPickerContainer>
             </>

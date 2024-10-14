@@ -96,3 +96,13 @@ export const StockPickerTitle = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   text-align: center;
 `
+
+export const Input = styled.TextInput`
+  background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+`
