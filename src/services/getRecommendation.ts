@@ -15,8 +15,11 @@ export function getRecommendation({
   stockSymbol,
   daysAmount = 10,
 }: RecommendationParams): Promise<RecommendationResponse> {
+  // Validate days amount
+  const days = daysAmount < 2 ? 2 : daysAmount
+
   // Use the most recent data for the stock
-  const recentData = mockStockData[stockSymbol].slice(0, daysAmount)
+  const recentData = mockStockData[stockSymbol].slice(0, days)
 
   // Calculate price and social media trends over the last X days
   const priceChange =
