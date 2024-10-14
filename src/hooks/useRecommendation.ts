@@ -44,12 +44,13 @@ export function useRecommendation({
 
   useEffect(() => {
     callRecommendation({ stockSymbol, daysAmount })
-  }, [stockSymbol, daysAmount])
+  }, [])
 
   return {
     action,
     stockData,
     isLoading,
     hasError,
+    refetch: callRecommendation,
   }
 }
