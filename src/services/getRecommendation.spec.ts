@@ -1,8 +1,6 @@
 import { getRecommendation } from './getRecommendation'
 
 jest.mock('@data', () => {
-  const today = new Date()
-
   return {
     mockStockData: {
       AAPL: [
@@ -130,6 +128,58 @@ jest.mock('@data', () => {
           socialCount: 988,
         },
       ],
+      META: [
+        {
+          date: '2024-10-14',
+          price: 367.84,
+          socialCount: 544,
+        },
+        {
+          date: '2024-10-13',
+          price: 925.34,
+          socialCount: 988,
+        },
+        {
+          date: '2024-10-12',
+          price: 456.78,
+          socialCount: 123,
+        },
+        {
+          date: '2024-10-11',
+          price: 789.01,
+          socialCount: 456,
+        },
+        {
+          date: '2024-10-10',
+          price: 234.56,
+          socialCount: 789,
+        },
+        {
+          date: '2024-10-09',
+          price: 678.9,
+          socialCount: 321,
+        },
+        {
+          date: '2024-10-08',
+          price: 123.45,
+          socialCount: 654,
+        },
+        {
+          date: '2024-10-07',
+          price: 567.89,
+          socialCount: 987,
+        },
+        {
+          date: '2024-10-06',
+          price: 345.67,
+          socialCount: 210,
+        },
+        {
+          date: '2024-10-05',
+          price: 890.12,
+          socialCount: 432,
+        },
+      ],
     },
   }
 })
@@ -230,5 +280,20 @@ describe('get recommendation service', () => {
     })
 
     expect(stockData.length).toBe(2)
+  })
+
+  it('should return a recommendation when using the default amount of days', async () => {
+    const stockSymbol = 'META'
+
+    const expectedRecommendation = {
+      action: 'hold',
+    }
+
+    const { action, stockData } = await getRecommendation({
+      stockSymbol,
+    })
+
+    expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(10)
   })
 })
