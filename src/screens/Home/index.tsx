@@ -10,14 +10,14 @@ import {
   StockPickerContainer,
   StockPickerTitle,
 } from './styles'
-import { mockStockData } from '@data'
 import theme from '@theme'
 import { Button } from '@components'
+import { useStockSymbols } from '@hooks'
 
 export function Home() {
   const navigation = useNavigation()
 
-  const stockSymbols = Object.keys(mockStockData)
+  const stockSymbols = useStockSymbols()
   const [stockSymbol, setStockSymbol] = useState(stockSymbols[0])
 
   const setSelectedItem = useCallback((item: any) => {
