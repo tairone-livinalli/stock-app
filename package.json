@@ -14,7 +14,8 @@
     "nuke": "rm -rf node_modules && rm -rf ios/Pods && rm -rf ios/Podfile.lock && rm -rf ios/build && rm -rf package-lock.json && npm install && cd ios && pod install && cd ..",
     "postinstall": "patch-package",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.2.3",
