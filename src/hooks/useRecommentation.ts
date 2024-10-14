@@ -41,7 +41,7 @@ export function useRecommendation({
     }
 
     callRecommendation()
-  }, [stockSymbol])
+  }, [stockSymbol, daysAmount])
 
   return {
     action,
