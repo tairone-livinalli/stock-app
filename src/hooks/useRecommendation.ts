@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { mockStockData } from '@data'
 import { getRecommendation } from '@services'
@@ -19,15 +19,15 @@ export function useRecommendation({
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
 
-  useEffect(() => {
-    const callRecommendation = async () => {
+  const callRecommendation = useCallback(
+    async (recommendationParams: RecommendationParams) => {
       try {
         setIsLoading(true)
         setHasError(false)
 
         const recommendation = await getRecommendation({
-          stockSymbol,
-          daysAmount,
+          stockSymbol: recommendationParams.stockSymbol,
+          daysAmount: recommendationParams.daysAmount,
         })
 
         setAction(recommendation.action)
@@ -38,9 +38,12 @@ export function useRecommendation({
       } finally {
         setIsLoading(false)
       }
-    }
+    },
+    []
+  )
 
-    callRecommendation()
+  useEffect(() => {
+    callRecommendation({ stockSymbol, daysAmount })
   }, [stockSymbol, daysAmount])
 
   return {
