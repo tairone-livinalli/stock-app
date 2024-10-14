@@ -15,39 +15,45 @@ export function getRecommendation({
   stockSymbol,
   daysAmount = 10,
 }: RecommendationParams): Promise<RecommendationResponse> {
-  // Validate days amount
-  const days = daysAmount < 2 ? 2 : daysAmount
+  const days = Math.max(daysAmount, 2)
 
-  // Use the most recent data for the stock
   const recentData = mockStockData[stockSymbol].slice(0, days)
 
-  // Calculate price and social media trends over the last X days
-  const priceChange =
-    recentData[0].price - recentData[recentData.length - 1].price
-  const socialChange =
-    recentData[0].socialCount - recentData[recentData.length - 1].socialCount
+  let totalPriceChange = 0
+  let totalSocialChange = 0
 
-  // Define thresholds for significant changes
-  const priceThreshold = 15 // Price change threshold
-  const socialThreshold = 500 // Social media count change threshold
-
-  // Buy logic
-  if (priceChange < -priceThreshold && socialChange > socialThreshold) {
-    return Promise.resolve({ action: 'buy', stockData: recentData }) // Price drop but increasing social interest
-  } else if (
-    priceChange > priceThreshold &&
-    socialChange > socialThreshold / 2
-  ) {
-    return Promise.resolve({ action: 'buy', stockData: recentData }) // Rising price with moderate social media support
-
-    // Sell logic
-  } else if (priceChange > priceThreshold && socialChange < -socialThreshold) {
-    return Promise.resolve({ action: 'sell', stockData: recentData }) // Price increase but low social media interest
-  } else if (priceChange < -priceThreshold && socialChange < -socialThreshold) {
-    return Promise.resolve({ action: 'sell', stockData: recentData }) // Both price and social media falling
-
-    // Hold logic
-  } else {
-    return Promise.resolve({ action: 'hold', stockData: recentData }) // Stable or minor changes in price and social media
+  for (let i = 1; i < recentData.length; i++) {
+    totalPriceChange += recentData[i - 1].price - recentData[i].price
+    totalSocialChange +=
+      recentData[i - 1].socialCount - recentData[i].socialCount
   }
+
+  const avgPriceChange = totalPriceChange / (days - 1)
+  const avgSocialChange = totalSocialChange / (days - 1)
+
+  const priceThreshold = 10
+  const socialThreshold = 50
+
+  let action: 'buy' | 'hold' | 'sell' = 'hold'
+
+  if (avgPriceChange < -priceThreshold && avgSocialChange > socialThreshold) {
+    action = 'buy' // Price drop with hight social support
+  } else if (
+    avgPriceChange > priceThreshold &&
+    avgSocialChange > socialThreshold / 2
+  ) {
+    action = 'buy' // Price rise with moderate social support
+  } else if (
+    avgPriceChange > priceThreshold &&
+    avgSocialChange < -socialThreshold
+  ) {
+    action = 'sell' // Price rise with low social support
+  } else if (
+    avgPriceChange < -priceThreshold &&
+    avgSocialChange < -socialThreshold
+  ) {
+    action = 'sell' // Price drop with low social support
+  }
+
+  return Promise.resolve({ action, stockData: recentData })
 }

@@ -7,282 +7,127 @@ jest.mock('@data', () => {
     mockStockData: {
       AAPL: [
         {
-          date: today.toISOString().split('T')[0],
-          price: 100,
-          socialCount: 100,
+          date: '2024-10-14',
+          price: 897.74,
+          socialCount: 612,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 1))
-            .toISOString()
-            .split('T')[0],
-          price: 90,
-          socialCount: 200,
+          date: '2024-10-13',
+          price: 494.11,
+          socialCount: 692,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 2))
-            .toISOString()
-            .split('T')[0],
-          price: 80,
-          socialCount: 300,
+          date: '2024-10-12',
+          price: 395.58,
+          socialCount: 71,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 3))
-            .toISOString()
-            .split('T')[0],
-          price: 70,
-          socialCount: 400,
+          date: '2024-10-11',
+          price: 76.61,
+          socialCount: 767,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 4))
-            .toISOString()
-            .split('T')[0],
-          price: 60,
-          socialCount: 500,
+          date: '2024-10-10',
+          price: 531.62,
+          socialCount: 162,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 5))
-            .toISOString()
-            .split('T')[0],
-          price: 50,
-          socialCount: 600,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 6))
-            .toISOString()
-            .split('T')[0],
-          price: 40,
+          date: '2024-10-09',
+          price: 515.48,
           socialCount: 700,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 7))
-            .toISOString()
-            .split('T')[0],
-          price: 30,
-          socialCount: 800,
+          date: '2024-10-08',
+          price: 91.22,
+          socialCount: 90,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 8))
-            .toISOString()
-            .split('T')[0],
-          price: 20,
-          socialCount: 900,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 9))
-            .toISOString()
-            .split('T')[0],
-          price: 10,
-          socialCount: 1000,
+          date: '2024-10-07',
+          price: 339.93,
+          socialCount: 216,
         },
       ],
       AMZN: [
         {
-          date: today.toISOString().split('T')[0],
-          price: 1000,
-          socialCount: 1000,
+          date: '2024-10-14',
+          price: 897.74,
+          socialCount: 612,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 1))
-            .toISOString()
-            .split('T')[0],
-          price: 90,
-          socialCount: 200,
+          date: '2024-10-13',
+          price: 494.11,
+          socialCount: 692,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 2))
-            .toISOString()
-            .split('T')[0],
-          price: 80,
-          socialCount: 300,
+          date: '2024-10-12',
+          price: 395.58,
+          socialCount: 71,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 3))
-            .toISOString()
-            .split('T')[0],
-          price: 70,
-          socialCount: 400,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 4))
-            .toISOString()
-            .split('T')[0],
-          price: 60,
-          socialCount: 500,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 5))
-            .toISOString()
-            .split('T')[0],
-          price: 50,
-          socialCount: 600,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 6))
-            .toISOString()
-            .split('T')[0],
-          price: 40,
-          socialCount: 700,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 7))
-            .toISOString()
-            .split('T')[0],
-          price: 30,
-          socialCount: 800,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 8))
-            .toISOString()
-            .split('T')[0],
-          price: 20,
-          socialCount: 900,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 9))
-            .toISOString()
-            .split('T')[0],
-          price: 10,
-          socialCount: 10,
+          date: '2024-10-11',
+          price: 76.61,
+          socialCount: 767,
         },
       ],
       GOOG: [
         {
-          date: today.toISOString().split('T')[0],
-          price: 1000,
-          socialCount: 1000,
+          date: '2024-10-14',
+          price: 897.74,
+          socialCount: 612,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 1))
-            .toISOString()
-            .split('T')[0],
-          price: 90,
-          socialCount: 200,
+          date: '2024-10-13',
+          price: 494.11,
+          socialCount: 692,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 2))
-            .toISOString()
-            .split('T')[0],
-          price: 80,
-          socialCount: 300,
+          date: '2024-10-12',
+          price: 395.58,
+          socialCount: 71,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 3))
-            .toISOString()
-            .split('T')[0],
-          price: 70,
-          socialCount: 400,
+          date: '2024-10-11',
+          price: 76.61,
+          socialCount: 767,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 4))
-            .toISOString()
-            .split('T')[0],
-          price: 60,
-          socialCount: 500,
+          date: '2024-10-10',
+          price: 531.62,
+          socialCount: 162,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 5))
-            .toISOString()
-            .split('T')[0],
-          price: 50,
-          socialCount: 600,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 6))
-            .toISOString()
-            .split('T')[0],
-          price: 40,
+          date: '2024-10-09',
+          price: 515.48,
           socialCount: 700,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 7))
-            .toISOString()
-            .split('T')[0],
-          price: 30,
-          socialCount: 800,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 8))
-            .toISOString()
-            .split('T')[0],
-          price: 20,
-          socialCount: 900,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 9))
-            .toISOString()
-            .split('T')[0],
-          price: 1000,
-          socialCount: 1000,
         },
       ],
       MSFT: [
         {
-          date: today.toISOString().split('T')[0],
-          price: 1000,
-          socialCount: 1000,
+          date: '2024-10-14',
+          price: 280.46,
+          socialCount: 886,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 1))
-            .toISOString()
-            .split('T')[0],
-          price: 90,
-          socialCount: 200,
+          date: '2024-10-13',
+          price: 697.88,
+          socialCount: 580,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 2))
-            .toISOString()
-            .split('T')[0],
-          price: 80,
-          socialCount: 300,
+          date: '2024-10-12',
+          price: 896.82,
+          socialCount: 708,
+        },
+      ],
+      TSLA: [
+        {
+          date: '2024-10-14',
+          price: 367.84,
+          socialCount: 544,
         },
         {
-          date: new Date(today.setDate(today.getDate() - 3))
-            .toISOString()
-            .split('T')[0],
-          price: 70,
-          socialCount: 400,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 4))
-            .toISOString()
-            .split('T')[0],
-          price: 60,
-          socialCount: 500,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 5))
-            .toISOString()
-            .split('T')[0],
-          price: 50,
-          socialCount: 600,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 6))
-            .toISOString()
-            .split('T')[0],
-          price: 40,
-          socialCount: 700,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 7))
-            .toISOString()
-            .split('T')[0],
-          price: 30,
-          socialCount: 800,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 8))
-            .toISOString()
-            .split('T')[0],
-          price: 20,
-          socialCount: 900,
-        },
-        {
-          date: new Date(today.setDate(today.getDate() - 9))
-            .toISOString()
-            .split('T')[0],
-          price: 1000,
-          socialCount: 1000,
+          date: '2024-10-13',
+          price: 925.34,
+          socialCount: 988,
         },
       ],
     },
@@ -290,57 +135,100 @@ jest.mock('@data', () => {
 })
 
 describe('get recommendation service', () => {
-  it('should return a "sell" recommendation', async () => {
-    // Arrange
+  it('should return a "buy" recommendation when the price rise with moderate social media support', async () => {
     const stockSymbol = 'AAPL'
-    const daysAmount = 10
-
-    const expectedRecommendation = {
-      action: 'sell',
-    }
-
-    // Act
-    const { action } = await getRecommendation({ stockSymbol, daysAmount })
-
-    // Assert
-    expect(action).toEqual(expectedRecommendation.action)
-  })
-
-  it('should return a "buy" recommendation', async () => {
-    // Arrange
-    const stockSymbol = 'AMZN'
-    const daysAmount = 10
+    const daysAmount = 8
 
     const expectedRecommendation = {
       action: 'buy',
     }
 
-    // Act
-    const { action } = await getRecommendation({
+    const { action, stockData } = await getRecommendation({
       stockSymbol,
       daysAmount,
     })
 
-    // Assert
     expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(8)
   })
 
-  it('should return a "hold" recommendation', async () => {
-    // Arrange
+  it('should return a "buy" recommendation when the price drops with high social media support', async () => {
+    const stockSymbol = 'MSFT'
+    const daysAmount = 3
+
+    const expectedRecommendation = {
+      action: 'buy',
+    }
+
+    const { action, stockData } = await getRecommendation({
+      stockSymbol,
+      daysAmount,
+    })
+
+    expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(3)
+  })
+
+  it('should return a "sell" recommendation when the price rise with low social media support', async () => {
+    const stockSymbol = 'AMZN'
+    const daysAmount = 4
+
+    const expectedRecommendation = {
+      action: 'sell',
+    }
+
+    const { action, stockData } = await getRecommendation({
+      stockSymbol,
+      daysAmount,
+    })
+
+    expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(4)
+  })
+
+  it('should return a "sell" recommendation when the price drop with low social media support', async () => {
+    const stockSymbol = 'TSLA'
+    const daysAmount = 2
+
+    const expectedRecommendation = {
+      action: 'sell',
+    }
+
+    const { action, stockData } = await getRecommendation({
+      stockSymbol,
+      daysAmount,
+    })
+
+    expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(2)
+  })
+
+  it('should return a "hold" recommendation when there is no significant change', async () => {
     const stockSymbol = 'GOOG'
-    const daysAmount = 10
+    const daysAmount = 6
 
     const expectedRecommendation = {
       action: 'hold',
     }
 
-    // Act
-    const { action } = await getRecommendation({
+    const { action, stockData } = await getRecommendation({
       stockSymbol,
       daysAmount,
     })
 
-    // Assert
     expect(action).toEqual(expectedRecommendation.action)
+    expect(stockData.length).toBe(6)
+  })
+
+  it('should return a recommendation when the amount of days requested is less then 2', async () => {
+    const stockSymbol = 'GOOG'
+    const daysAmount = 1
+
+    const { stockData } = await getRecommendation({
+      stockSymbol,
+      daysAmount,
+    })
+
+    expect(stockData.length).toBe(2)
   })
 })
