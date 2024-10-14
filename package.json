@@ -13,7 +13,8 @@
     "ios": "expo run:ios",
     "nuke": "rm -rf node_modules && rm -rf ios/Pods && rm -rf ios/Podfile.lock && rm -rf ios/build && rm -rf package-lock.json && npm install && cd ios && pod install && cd ..",
     "postinstall": "patch-package",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.2.3",
