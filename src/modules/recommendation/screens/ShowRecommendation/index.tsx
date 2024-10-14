@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
+import { Picker } from '@react-native-picker/picker'
 
 import {
   Container,
@@ -16,11 +17,13 @@ import {
   StockList,
   TitleContainer,
   IconButton,
+  StockPickerContainer,
+  StockPickerTitle,
 } from './styles'
 
 import theme from '@theme'
-import { useRecommendation } from '@hooks'
-import { Loading } from '@components'
+import { useRecommendation, useStockSymbols } from '@hooks'
+import { Button, Loading } from '@components'
 import { StockData } from '@models'
 
 const COLOR = {
@@ -72,15 +75,34 @@ function RenderStockData({
 export function ShowRecommendation({ route }: any) {
   const navigation = useNavigation()
   const insets = useSafeAreaInsets()
-  const { stockSymbol } = route.params
+
+  const [showFilter, setShowFilter] = useState(false)
+  const [stockSymbolFilter, setStockSymbolFilter] = useState(
+    route.params.stockSymbol
+  )
+  const [daysAmountFilter, setDaysAmountFilter] = useState(10)
 
   const { action, stockData, isLoading } = useRecommendation({
-    stockSymbol,
-    daysAmount: 20,
+    stockSymbol: stockSymbolFilter,
+    daysAmount: daysAmountFilter,
   })
+
+  const stockSymbols = useStockSymbols()
 
   const goBack = useCallback(() => {
     navigation.goBack()
+  }, [])
+
+  const toggleShowFilter = useCallback(() => {
+    setShowFilter((prev) => !prev)
+  }, [])
+
+  const onSelectStockSymbol = useCallback((stock: string) => {
+    setStockSymbolFilter(stock)
+  }, [])
+
+  const onPressDone = useCallback(() => {
+    setShowFilter(false)
   }, [])
 
   return (
@@ -94,7 +116,7 @@ export function ShowRecommendation({ route }: any) {
           />
         </IconButton>
         <Title>Recommendation</Title>
-        <IconButton>
+        <IconButton onPress={toggleShowFilter}>
           <Ionicons
             name={'filter-outline'}
             size={32}
@@ -110,7 +132,7 @@ export function ShowRecommendation({ route }: any) {
       ) : (
         <>
           <RecommendationCard>
-            <StockName>{stockSymbol}</StockName>
+            <StockName>{stockSymbolFilter}</StockName>
             <RecommendationContainer>
               <Ionicons name={ICON[action]} size={32} color={COLOR[action]} />
               <RecommendationText style={{ color: COLOR[action] }}>
@@ -118,16 +140,39 @@ export function ShowRecommendation({ route }: any) {
               </RecommendationText>
             </RecommendationContainer>
           </RecommendationCard>
-          <Subtitle>Stock History</Subtitle>
-          <StockList>
-            {stockData.map((todayStockData, index) => (
-              <RenderStockData
-                key={todayStockData.date}
-                todayStockData={todayStockData}
-                yesterdayStockData={stockData[index + 1]}
-              />
-            ))}
-          </StockList>
+          {showFilter ? (
+            <>
+              <StockPickerContainer>
+                <StockPickerTitle>
+                  Change the stock symbol to get a new recommendation
+                </StockPickerTitle>
+                <Picker
+                  selectedValue={stockSymbolFilter}
+                  onValueChange={onSelectStockSymbol}
+                  style={{ color: theme.COLORS.WHITE, paddingVertical: 8 }}
+                  itemStyle={{ color: theme.COLORS.WHITE }}
+                >
+                  {stockSymbols.map((symbol) => (
+                    <Picker.Item key={symbol} label={symbol} value={symbol} />
+                  ))}
+                </Picker>
+                <Button title="Done" onPress={onPressDone} />
+              </StockPickerContainer>
+            </>
+          ) : (
+            <>
+              <Subtitle>Stock History</Subtitle>
+              <StockList>
+                {stockData.map((todayStockData, index) => (
+                  <RenderStockData
+                    key={todayStockData.date}
+                    todayStockData={todayStockData}
+                    yesterdayStockData={stockData[index + 1]}
+                  />
+                ))}
+              </StockList>
+            </>
+          )}
         </>
       )}
     </Container>

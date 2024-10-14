@@ -86,3 +86,13 @@ export const IconButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `
+export const StockPickerContainer = styled.View`
+  margin-top: 56px;
+  justify-content: center;
+`
+export const StockPickerTitle = styled.Text`
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  text-align: center;
+`
