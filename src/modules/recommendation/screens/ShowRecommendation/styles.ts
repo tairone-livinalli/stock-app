@@ -13,6 +13,12 @@ export const LoadingContainer = styled.View`
   align-items: center;
 `
 
+export const TitleContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.COLORS.BRAND_LIGHT};
   font-size: ${({ theme }) => theme.FONT_SIZE.XXXL}px;
@@ -70,4 +76,13 @@ export const StockDataCard = styled.View`
 
 export const StockList = styled.ScrollView`
   flex: 1;
+`
+
+export const IconButton = styled.TouchableOpacity`
+  margin: 0;
+  padding: 8px;
+  border-radius: 6px;
+
+  justify-content: center;
+  align-items: center;
 `

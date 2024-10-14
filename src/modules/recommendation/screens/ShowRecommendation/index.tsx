@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container,
@@ -13,6 +14,8 @@ import {
   StockDataCard,
   Subtitle,
   StockList,
+  TitleContainer,
+  IconButton,
 } from './styles'
 
 import theme from '@theme'
@@ -67,6 +70,7 @@ function RenderStockData({
 }
 
 export function ShowRecommendation({ route }: any) {
+  const navigation = useNavigation()
   const insets = useSafeAreaInsets()
   const { stockSymbol } = route.params
 
@@ -75,9 +79,29 @@ export function ShowRecommendation({ route }: any) {
     daysAmount: 20,
   })
 
+  const goBack = useCallback(() => {
+    navigation.goBack()
+  }, [])
+
   return (
     <Container style={{ paddingTop: insets.top }}>
-      <Title>Recommendation</Title>
+      <TitleContainer>
+        <IconButton onPress={goBack}>
+          <Ionicons
+            name={'chevron-back-outline'}
+            size={32}
+            color={theme.COLORS.WHITE}
+          />
+        </IconButton>
+        <Title>Recommendation</Title>
+        <IconButton>
+          <Ionicons
+            name={'filter-outline'}
+            size={32}
+            color={theme.COLORS.WHITE}
+          />
+        </IconButton>
+      </TitleContainer>
 
       {isLoading ? (
         <LoadingContainer>
