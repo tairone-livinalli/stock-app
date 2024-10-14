@@ -1,1 +1,2 @@
-export * from './useRecommentation'
+export * from './useRecommendation'
+export * from './useStockSymbols'
